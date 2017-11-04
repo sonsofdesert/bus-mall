@@ -72,13 +72,45 @@ function click(event) {
   displayPics();
 }
 
+var data = [];
+//this is the name for each product
+var labelColors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange', 'teil', 'turquoise', 'dark-blue', 'white', 'grey', 'black', 'dark-green', 'light-blue', 'light-green', 'dark-red', 'light-red', 'dark-orange', 'light-orange', 'dark-grey'];
+
+var labelNames = [];
+
 function showTally() {
   for(var i = 0; i < TheProduct.all.length; i++) {
     var liEl = document.createElement('li');
     liEl.textContent = TheProduct.all[i].name + ' has ' + TheProduct.all[i].votes + ' votes in ' + TheProduct.all[i].views + ' views';
     TheProduct.tally.appendChild(liEl);
+    labelNames.push(TheProduct.all[i].name);
+    data.push(TheProduct.all[i].votes);
+    console.log('this is the chart data' + data);
   }
 }
 
 TheProduct.container.addEventListener('click', click);
 displayPics();
+
+var ctx = document.getElementById('chart').getContext('2d');
+
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labelNames,
+    datasets: [{
+      label: '# of Votes',
+      data: data,
+      backgroundColor: labelColors
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
