@@ -38,7 +38,7 @@ function displayPics() {
     console.error('Duplicate at center, or in prior view! Re run!');
     currentlyDisiplaying[1] = makeRandom();
   }
-  //the right image
+
   currentlyDisiplaying[2] = makeRandom();
   while(currentlyDisiplaying[0] === currentlyDisiplaying[2] || currentlyDisiplaying[1] === currentlyDisiplaying[2] || TheProduct.justViewed.indexOf(currentlyDisiplaying[2]) !== -1) {
     console.error('Duplicate at 3rd one! Re run it!');
