@@ -52,7 +52,7 @@ function displayPics() {
     TheProduct.justViewed[i] = currentlyDisiplaying[i];
   }
 }
-//click event
+//click events
 function click(event) {
   console.log(TheProduct.totalClicks, 'total clicks');
   if(TheProduct.totalClicks > 24) {
